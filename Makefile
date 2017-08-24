@@ -1,5 +1,5 @@
 # gtest are used for google test  -lgtest -lgtest_main -lpthread
-CXXFLAGS= -g
+CXXFLAGS= -g -Wall -Wextra -Werror
 
 CXXFILES:=rainbowarray.cc
 TARGETS:=rainbowarray
@@ -10,7 +10,7 @@ all: $(TARGETS)
 %.o: %.cc
 	$(CROSS_ENV) $(CROSS_COMPILE)$(CXX) $(L_CXXFLAGS) $(CXXFLAGS) -c -o $@ $<
 
-algorithm: $(OBJECTS) 
+rainbowarray: $(OBJECTS) 
 	$(CROSS_ENV) $(CROSS_COMPILE)$(CXX) $(L_CXXFLAGS) $(CXXFLAGS) -o $@ $^
 
 install: $(TARGETS)
