@@ -1,5 +1,5 @@
 # gtest are used for google test  -lgtest -lgtest_main -lpthread
-CXXFLAGS= -g -Wall -Wextra -Werror
+CXXFLAGS= -g -Wall -Wextra 
 
 CXXFILES:=rainbowarray.cc
 TARGETS:=rainbowarray
