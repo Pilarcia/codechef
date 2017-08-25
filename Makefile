@@ -1,8 +1,8 @@
 # gtest are used for google test  -lgtest -lgtest_main -lpthread
 CXXFLAGS= -g -Wall -Wextra 
 
-CXXFILES:=rainbowarray.cc
-TARGETS:=rainbowarray
+CXXFILES:=rainbowarray.cc elevatorstairs.cc
+TARGETS:=rainbowarray elevatorstairs
 OBJECTS :=$(patsubst %.cc, %.o, $(CXXFILES))
 
 all: $(TARGETS)
@@ -10,7 +10,10 @@ all: $(TARGETS)
 %.o: %.cc
 	$(CROSS_ENV) $(CROSS_COMPILE)$(CXX) $(L_CXXFLAGS) $(CXXFLAGS) -c -o $@ $<
 
-rainbowarray: $(OBJECTS) 
+rainbowarray: rainbowarray.o
+	$(CROSS_ENV) $(CROSS_COMPILE)$(CXX) $(L_CXXFLAGS) $(CXXFLAGS) -o $@ $^
+
+elevatorstairs: elevatorstairs.o
 	$(CROSS_ENV) $(CROSS_COMPILE)$(CXX) $(L_CXXFLAGS) $(CXXFLAGS) -o $@ $^
 
 install: $(TARGETS)
@@ -30,7 +33,10 @@ clean:
 #
 # Dependecies
 #
-rainbowarray.o: $(CXXFILES)  
+rainbowarray.o: rainbowarray.cc
+	$(CROSS_ENV) $(CROSS_COMPILE)$(CXX) $(L_CXXFLAGS) $(CXXFLAGS) -c -o $@ $<
+
+elevatorstairs.o: elevatorstairs.cc
 	$(CROSS_ENV) $(CROSS_COMPILE)$(CXX) $(L_CXXFLAGS) $(CXXFLAGS) -c -o $@ $<
 
 
